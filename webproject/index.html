@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Port of Gold Beach</title>
+    <style type="text/css">
+      section {
+        padding: 1px;
+        margin: 2px;
+      }
+      article {
+        padding: 15px 0;
+        margin: 15px 0;
+        font-weight: bold;
+      }
+      p {
+        padding: 15px 0;
+        margin: 15px 0;
+      }
+      .noShow {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Fee Calculator</h1>
+      <p><a href="#" onClick="togglePage(1);">Boat Slip</a> | <a href="#" onClick="togglePage(2);">Parking Pass</a> | <a href="#" onClick="togglePage(3);">Car Rental</a></p>
+    </header>
+    <p>Number of Days: <input name="days" name="numberOfDays" id="numberOfDays" value=1 size='1'></p>
+    <section id="slipFeeCalculator">
+      <h1>Boat Slip Fee Calculator (<a href="#" onClick="togglePage(1);">remove</a>)</h1>
+
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Slip Daily Fee:</td>
+            <td id="slipDailyFee">$25</td>
+          </tr>
+          <tr>
+            <td>Electric Power</td>
+            <td>$15:</td>
+            <td>
+              <select name="electricPower" id="electricPower">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </td>
+          </tr>
+
+        </form>
+      </table>
+    </section>
+    <section id="parkingPassCalculator">
+      <h1>Parking Pass Calculator (<a href="#" onClick="togglePage(2);">remove</a>)</h1>
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Parking Daily Fee:</td>
+            <td>$5</td>
+          </tr>
+        </form>
+      </table>
+    </section>
+    <section id="carRentalCalculator">
+      <h1>Car Rental Calculator (<a href="#" onClick="togglePage(3);">remove</a>)</h1>
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Car Rental Daily Fee:</td>
+            <td>$75</td>
+          </tr>
+        </form>
+      </table>
+    </section>
+    <section>
+      <article>Total: <span id="total">$0</td>
+    </section>
+  <script>
+    /************************************************************************************
+    Global variables
+    ************************************************************************************/
+    var electricPower = document.getElementById("electricPower");
+    var numberOfDays = document.getElementById("numberOfDays");
+    var total = document.getElementById("total");
+    var slipFeeCalculator = document.getElementById("slipFeeCalculator");
+    var parkingPassCalculator = document.getElementById("parkingPassCalculator");
+    var carRentalCalculator = document.getElementById("carRentalCalculator");
+    var carRentalDays = document.getElementById("carRentalDays");
+    var slipDailyFee = 25;
+    var electricFee = 15;
+    var parkingFee = 5;
+    var carRentalFee = 75;
+
+    /************************************************************************************
+    Event Listeners
+    ************************************************************************************/
+    if(electricPower.addEventListener){
+        electricPower.addEventListener("change", calculateTotal);
+    } else if (electricPower.attachEvent){
+      // Use attachEvent for older browser support
+      electricPower.attachEvent("change", calculateTotal);
+    }
+
+    if(numberOfDays.addEventListener){
+        numberOfDays.addEventListener("change", calculateTotal);
+    } else if (numberOfDays.attachEvent){
+      // Use attachEvent for older browser support
+      numberOfDays.attachEvent("change", calculateTotal);
+    }
+
+    if(parkingDays.addEventListener){
+        parkingDays.addEventListener("change", calculateTotal);
+    } else if (parkingDays.attachEvent){
+      // Use attachEvent for older browser support
+      parkingDays.attachEvent("change", calculateTotal);
+    }
+
+    if(carRentalDays.addEventListener){
+        carRentalDays.addEventListener("change", calculateTotal);
+    } else if (carRentalDays.attachEvent){
+      // Use attachEvent for older browser support
+      carRentalDays.attachEvent("change", calculateTotal);
+    }
+    /************************************************************************************
+     Displays calculaters based on user selection
+    ************************************************************************************/
+    function togglePage(pageId){
+      switch (pageId){
+        case 1:
+          slipFeeCalculator.classList.toggle("noShow");
+          calculateTotal();
+          break;
+        case 2:
+          parkingPassCalculator.classList.toggle("noShow");
+          calculateTotal();
+          break;
+        case 3:
+          carRentalCalculator.classList.toggle("noShow");
+          calculateTotal();
+          break;
+        default:
+          break;
+      }
+    }
+    /************************************************************************************
+     Calculates the total fee based on the total number of slip days and if power is required
+    ************************************************************************************/
+    function calculateTotal(){
+      // Define local variables
+      var calculatedTotal = 0;
+      if (!slipFeeCalculator.classList.contains("noShow")){
+        // Multiply each day by the cost of power if selected
+        if (electricPower.value === "Yes") {
+          calculatedTotal += electricFee * numberOfDays.value;
+        }
+        // Multiply each day by the cost of the daily fee
+        calculatedTotal += numberOfDays.value * slipDailyFee;
+      }
+
+      if (!parkingPassCalculator.classList.contains("noShow")){
+        // Multiply each day by the cost of parking fee
+        calculatedTotal += numberOfDays.value * parkingFee;
+      }
+
+      if (!carRentalCalculator.classList.contains("noShow")){
+        // Multiply each day by the cost of parking fee
+        calculatedTotal += numberOfDays.value * carRentalFee;
+      }
+
+
+
+      // Update the page with the appropriate total
+      total.innerHTML = "$" + calculatedTotal;
+    } // End calculateTotal
+
+    /************************************************************************************
+    Function Calls
+    ************************************************************************************/
+    calculateTotal();
+    togglePage(1);
+    togglePage(2);
+    togglePage(3);
+
+  </script>
+  </body>
+</html>
