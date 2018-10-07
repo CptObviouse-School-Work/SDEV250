@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Aegis Web Design Blog</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  <body>
+    <header>
+      <h1>Fee Calculator</h1>
+      <p><a href="#" onClick="togglePage(1);">Boat Slip</a> | <a href="#" onClick="togglePage(2);">Parking Pass</a> | <a href="#" onClick="togglePage(3);">Car Rental</a></p>
+    </header>
+    <div>
+      <p id='errorMessage'>Error Messages</p>
+    </div>
+    <p>Number of Days: <input name="days" name="numberOfDays" id="numberOfDays" value=1 size='1'></p>
+    <section id="slipFeeCalculator" class="noShow">
+      <h1>Boat Slip Fee Calculator (<a href="#" onClick="togglePage(1);">remove</a>)</h1>
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Slip Daily Fee:</td>
+            <td id="slipDailyFee">$25</td>
+          </tr>
+          <tr>
+            <td>Electric Power</td>
+            <td>$15:</td>
+            <td>
+              <select name="electricPower" id="electricPower">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
+            </td>
+          </tr>
+
+        </form>
+      </table>
+    </section>
+    <section id="parkingPassCalculator" class="noShow">
+      <h1>Parking Pass Calculator (<a href="#" onClick="togglePage(2);">remove</a>)</h1>
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Parking Daily Fee:</td>
+            <td>$5</td>
+          </tr>
+        </form>
+      </table>
+    </section>
+    <section id="carRentalCalculator" class="noShow">
+      <h1>Car Rental Calculator (<a href="#" onClick="togglePage(3);">remove</a>)</h1>
+      <table>
+        <form action="index.html" method="post">
+          <tr>
+            <td>Car Rental Daily Fee:</td>
+            <td>$75</td>
+          </tr>
+        </form>
+      </table>
+    </section>
+    <section>
+      <article>Total: <span id="total">$0</td>
+    </section>
+  <script src="script.js"> </script>
+  </body>
+</html>
