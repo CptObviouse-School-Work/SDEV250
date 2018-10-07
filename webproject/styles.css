@@ -19,3 +19,9 @@ p {
   width: 100%;
   display: none;
 }
+.blog-card {
+  background: #eee;
+}
+li {
+  list-style-type: none;
+}

@@ -8,6 +8,84 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Fee Calculator</h1>
+    <p><a href="#" onClick="togglePage(1);">Boat Slip</a> | <a href="#" onClick="togglePage(2);">Parking Pass</a> | <a href="#" onClick="togglePage(3);">Car Rental</a></p>
+  </header>
+  <div>
+    <p id='errorMessage'>Error Messages</p>
+  </div>
+  <p>Number of Days: <input name="days" name="numberOfDays" id="numberOfDays" value=1 size='1'></p>
+  <section id="slipFeeCalculator" class="noShow">
+    <h1>Boat Slip Fee Calculator (<a href="#" onClick="togglePage(1);">remove</a>)</h1>
+    <table>
+      <form action="index.html" method="post">
+        <tr>
+          <td>Slip Daily Fee:</td>
+          <td id="slipDailyFee">$25</td>
+        </tr>
+        <tr>
+          <td>Electric Power</td>
+          <td>$15:</td>
+          <td>
+            <select name="electricPower" id="electricPower">
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </td>
+        </tr>
+
+      </form>
+    </table>
+  </section>
+  <section id="parkingPassCalculator" class="noShow">
+    <h1>Parking Pass Calculator (<a href="#" onClick="togglePage(2);">remove</a>)</h1>
+    <table>
+      <form action="index.html" method="post">
+        <tr>
+          <td>Parking Daily Fee:</td>
+          <td>$5</td>
+        </tr>
+      </form>
+    </table>
+  </section>
+  <section id="carRentalCalculator" class="noShow">
+    <h1>Car Rental Calculator (<a href="#" onClick="togglePage(3);">remove</a>)</h1>
+    <table>
+      <form action="index.html" method="post">
+        <tr>
+          <td>Car Rental Daily Fee:</td>
+          <td>$75</td>
+        </tr>
+      </form>
+    </table>
+  </section>
+  <section>
+    <article>Total: <span id="total">$0</td>
+  </section>
+  <div class="blog-card">
+    <h1>Web Security</h1>
+    <p>
+      Staying safe online has become a very in depth topic requring many different strategies to combine in order to remain safe. While many people understand that an email from some random person saying that if you give them $100 they will return to you $500 when they get into the United States is a scam, just as many people will actually fall for this. Understanding how to sort out legitimate emails, websites, and downloads is a skill learned over time, but I have gathered a few different sources that can help jump start your knowledge below.
+    </p>
+    <p>
+      Below is a list of just some of the information that a website can gather about you just from visiting. Read more below about how to stay safe online.
+      <ul>
+        <li id="appName"></li>
+        <li id="appVersion"></li>
+        <li id="geoLocation"></li>
+        <li id="onLine"></li>
+        <li id="platform"></li>
+        <li id="userAgent"></li>
+      </ul>
+    </p>
+    <p>"Clearing cookies that you don’t want or need is the best way to keep sites from tracking you once you’ve navigated to new, unrelated websites."<br><a href="https://www.secjuice.com/how-to-use-the-internet-safely/" target="_blank">SecJuice</a>
+    </p>
+    <p>"It is very easy to clone a real website and does not take a skilled developer long to produce a very professional-looking, but malicious site."<br><a href="https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/" target="_blank">Get Safe Online</a>
+    </p>
+    <p>"Use strong unique passwords online. Learn how to create strong passwords and passphrases."<br><a href="https://www.staysmartonline.gov.au/protect-yourself/do-things-safely/browsing-web-safely" target="_blank">Stay Smart Online</a>
+    </p>
+  </div>
 <script src='script.js'></script>
 </body>
 </html>
